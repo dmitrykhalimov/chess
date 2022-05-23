@@ -13,11 +13,12 @@ class Row extends Component {
   render() {
     return (
       <div className={`row`}>
-        {CELLS.map((cellName) => {
+        {/* ух какая штука, зарефактори меня */}
+        {CELLS.map((item) => item).reverse().map((cellName) => {
           return <Cell 
             key={`${this.rowName}${cellName}`}
             cellName={cellName}
-            rowName={this.rowName} 
+            rowName={this.rowName}
           />
         })}
       </div>

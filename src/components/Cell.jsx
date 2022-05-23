@@ -7,11 +7,24 @@ class Cell extends Component {
     this.cellName = props.cellName;
     this.rowName = props.rowName;
     this.fullName = `${this.rowName}${this.cellName}`
+
+    this.state = {
+      isHighlighted: false
+    }
+    // this.highlightSelected = this.highlightSelected.bind(this);
   }
+
+  // highlightSelected() => {
+
+  // }
 
   render() {
     return (
-      <div className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'}`}>
+      <div 
+        className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'} ${this.state.isHighlighted ? 'cell--highlighted' : ''}`}
+        onClick={() => this.setState({isHighlighted: true})}
+      >
+        {this.fullName}
       </div>
     );
   }
