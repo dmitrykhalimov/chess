@@ -12,7 +12,6 @@ class Cell extends Component {
   render() {
     return (
       <div className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'}`}>
-        {`${this.rowName}${this.cellName}`}
       </div>
     );
   }

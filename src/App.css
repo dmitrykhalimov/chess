@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.board {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+}
+
+.cell--white {
+  background-color: #f6dbb5;
+}
+
+.cell--black {
+  background-color: #242424;
+}

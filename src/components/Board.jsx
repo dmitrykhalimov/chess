@@ -8,7 +8,8 @@ const ROWS = [
   'D',
   'E',
   'F',
-  'G'
+  'G',
+  'H'
 ]
 
 class Board extends Component {
