@@ -47,9 +47,14 @@
 }
 
 .cell {
+  position: relative;
   box-sizing: border-box;
   width: 80px;
   height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cell--white {
@@ -58,9 +63,20 @@
 
 .cell--black {
   color: white;
-  background-color: #242424;
+  background-color: #684421;
 }
 
 .cell--highlighted {
   border: 4px solid green;
+}
+
+.cell span {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.cell img {
+  width: 70px;
+  height: 70px;
 }

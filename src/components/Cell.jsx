@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {cellColor} from '../core/cellColor';
+import Figure from './Figure';
 
 class Cell extends Component {
   constructor(props) {
@@ -25,8 +26,8 @@ class Cell extends Component {
         className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'} ${this.state.isHighlighted ? 'cell--highlighted' : ''}`}
         onClick={() => this.setState({isHighlighted: true})}
       >
-        {this.fullName}
-        {this.figures[this.fullName] ? <p>{this.figures[this.fullName]}</p> : ''}
+        <span>{this.fullName}</span>
+        {this.figures[this.fullName] ? <Figure type={this.figures[this.fullName]} /> : ''}
       </div>
     );
   }
