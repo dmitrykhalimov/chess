@@ -1,4 +1,7 @@
+import { highlightCell } from "../core/highlightCell";
+
 const initalState = {
+  player: 'white',
   highlightedCell: ''
 };
 
@@ -7,7 +10,7 @@ export default function rootReducer(state = initalState, action) {
     case 'SELECT_CELL':
       console.log(action.payload)
       return {
-        highlightedCell: action.payload,
+        highlightedCell: highlightCell(action.payload.cellName, action.payload.cellFigure, state.player),
       }
     default: 
       return state

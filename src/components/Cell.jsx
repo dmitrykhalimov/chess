@@ -9,23 +9,20 @@ class Cell extends Component {
     this.cellName = props.cellName;
     this.rowName = props.rowName;
     this.figures = props.figures;
+    
     this.fullName = `${this.rowName}${this.cellName}`
+    this.cellFigure = this.figures[this.fullName]
 
     this.state = {
       isHighlighted: false
     }
-    // this.highlightSelected = this.highlightSelected.bind(this);
   }
-
-  // highlightSelected() => {
-
-  // }
 
   render() {
     return (
       <div 
         className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'} ${this.props.highlightedCell === this.fullName ? 'cell--highlighted' : ''}`}
-        onClick={() => this.props.selectCell(this.fullName)}
+        onClick={() => this.props.selectCell(this.fullName, this.cellFigure)}
       >
         <span>{this.fullName}</span>
         {this.figures[this.fullName] ? <Figure type={this.figures[this.fullName]} /> : ''}
@@ -42,7 +39,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectCell: (cellName) => dispatch({type: 'SELECT_CELL', payload: cellName}),
+    selectCell: (cellName, cellFigure) => dispatch({type: 'SELECT_CELL', payload: {cellName, cellFigure}}),
   }
 }
 
