@@ -67,13 +67,13 @@
 }
 
 .cell--highlighted {
-  border: 4px solid green;
+  background-color: #739341;
 }
 
 .cell span {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 5px;
+  top: 5px;
 }
 
 .cell img {

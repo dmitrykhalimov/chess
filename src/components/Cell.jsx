@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import {cellColor} from '../core/cellColor';
 import Figure from './Figure';
 
@@ -23,8 +24,8 @@ class Cell extends Component {
   render() {
     return (
       <div 
-        className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'} ${this.state.isHighlighted ? 'cell--highlighted' : ''}`}
-        onClick={() => this.setState({isHighlighted: true})}
+        className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'} ${this.props.highlightedCell === this.fullName ? 'cell--highlighted' : ''}`}
+        onClick={() => this.props.selectCell(this.fullName)}
       >
         <span>{this.fullName}</span>
         {this.figures[this.fullName] ? <Figure type={this.figures[this.fullName]} /> : ''}
@@ -33,4 +34,16 @@ class Cell extends Component {
   }
 }
 
-export default Cell;
+function mapStateToProps(state) {
+  return {
+    highlightedCell: state.highlightedCell
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    selectCell: (cellName) => dispatch({type: 'SELECT_CELL', payload: cellName}),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cell);
