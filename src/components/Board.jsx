@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Row from './Row';
+import { filterRowFigures } from '../core/filterRowFigures'
 
 const ROWS = [
   'A',
@@ -13,6 +14,11 @@ const ROWS = [
 ]
 
 class Board extends Component {
+  constructor(props) {
+    super(props);
+    this.figures = filterRowFigures(props.boardConfig.pieces);
+  }
+
   render() {
     return (
       <div className={`board`}>
@@ -20,6 +26,7 @@ class Board extends Component {
           return <Row 
             key={`row${rowName}`}
             rowName={rowName}
+            figures={this.figures[rowName]}
           />
         })}
       </div>

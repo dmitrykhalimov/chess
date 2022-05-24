@@ -8,6 +8,7 @@ class Row extends Component {
   constructor(props) {
     super(props);
     this.rowName = props.rowName;
+    this.figures = props.figures;
   }
 
   render() {
@@ -19,6 +20,7 @@ class Row extends Component {
             key={`${this.rowName}${cellName}`}
             cellName={cellName}
             rowName={this.rowName}
+            figures={this.figures}
           />
         })}
       </div>

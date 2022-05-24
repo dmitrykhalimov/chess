@@ -3,12 +3,12 @@ import './App.css';
 
 import { Game, move, status, moves, aiMove, getFen } from 'js-chess-engine'
 const game = new Game()
-console.log(game);
+console.log(game.board.configuration);
 
 function App() {
   return (
     <div className="App">
-      <Board />
+      <Board boardConfig={game.board.configuration}/>
     </div>
   );
 }

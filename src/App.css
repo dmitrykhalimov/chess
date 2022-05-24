@@ -57,6 +57,7 @@
 }
 
 .cell--black {
+  color: white;
   background-color: #242424;
 }
 

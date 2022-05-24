@@ -6,6 +6,7 @@ class Cell extends Component {
     super(props);
     this.cellName = props.cellName;
     this.rowName = props.rowName;
+    this.figures = props.figures;
     this.fullName = `${this.rowName}${this.cellName}`
 
     this.state = {
@@ -25,6 +26,7 @@ class Cell extends Component {
         onClick={() => this.setState({isHighlighted: true})}
       >
         {this.fullName}
+        {this.figures[this.fullName] ? <p>{this.figures[this.fullName]}</p> : ''}
       </div>
     );
   }
