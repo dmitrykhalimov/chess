@@ -1,16 +1,19 @@
 import { highlightCell } from "../core/highlightCell";
+import { possibleMovies} from "../core/possibleMovies";
 
 const initalState = {
   player: 'white',
-  highlightedCell: ''
+  highlightedCell: '',
+  possibleMovies: [],
 };
 
 export default function rootReducer(state = initalState, action) {
   switch(action.type) {
     case 'SELECT_CELL':
-      console.log(action.payload)
+      const highlightedCell = highlightCell(action.payload.cellName, action.payload.cellFigure, state.player);
       return {
-        highlightedCell: highlightCell(action.payload.cellName, action.payload.cellFigure, state.player),
+        highlightedCell,
+        possibleMovies: highlightedCell !== '' ? possibleMovies(action.payload.cellName) : [],
       }
     default: 
       return state

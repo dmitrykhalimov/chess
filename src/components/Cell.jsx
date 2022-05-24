@@ -19,9 +19,13 @@ class Cell extends Component {
   }
 
   render() {
+    const colorClass = cellColor(this.fullName) ? 'cell--white' : 'cell--black';
+    const highlightClass = this.props.highlightedCell === this.fullName ? 'cell--highlighted' : '';
+    const possibleMovies = this.props.possibleMovies.find((el) => el === this.fullName) ? 'cell--possible' : '';
+
     return (
       <div 
-        className={`cell ${cellColor(this.fullName) ? 'cell--white' : 'cell--black'} ${this.props.highlightedCell === this.fullName ? 'cell--highlighted' : ''}`}
+        className={`cell ${colorClass} ${highlightClass} ${possibleMovies}`}
         onClick={() => this.props.selectCell(this.fullName, this.cellFigure)}
       >
         <span>{this.fullName}</span>
@@ -33,7 +37,8 @@ class Cell extends Component {
 
 function mapStateToProps(state) {
   return {
-    highlightedCell: state.highlightedCell
+    highlightedCell: state.highlightedCell,
+    possibleMovies: state.possibleMovies
   }
 }
 

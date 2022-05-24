@@ -80,3 +80,14 @@
   width: 70px;
   height: 70px;
 }
+
+.cell--possible::before {
+  position: absolute;
+  top: center;
+  left: center;
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-color: #739341;
+  border-radius: 50%;
+}

@@ -1,9 +1,7 @@
 import Board from './components/Board';
 import './App.css';
+import {game} from './core/engine';
 
-import { Game, move, status, moves, aiMove, getFen } from 'js-chess-engine'
-const game = new Game()
-console.log(game.board.configuration);
 
 function App() {
   return (
