@@ -5,7 +5,7 @@ import {getMovies} from './engine';
 const possibleMovies = (cellAddress) => {
   const movies = getMovies();
 
-  console.log(movies);
+  // console.log(movies);
 
   return movies[cellAddress] ? movies[cellAddress] : [];
 }

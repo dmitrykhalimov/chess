@@ -8,7 +8,10 @@ const getMovies = () => {
   return game.moves();
 }
 
-console.log(game.board.configuration);
-console.log(getMovies());
+game.move('E2', 'E4')
+game.aiMove();
 
-export {game, getMovies};
+// console.log(game.board.configuration);
+// console.log(getMovies());
+
+export {game, getMovies, move};

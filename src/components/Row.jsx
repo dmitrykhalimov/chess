@@ -12,6 +12,10 @@ class Row extends Component {
     this.figures = props.figures;
   }
 
+  componentDidUpdate() {
+    console.log(`Row ${this.rowName} updated`)
+  }
+
   render() {
     return (
       <div className={`row`}>

@@ -10,26 +10,30 @@ class Cell extends Component {
     this.rowName = props.rowName;
     this.figures = props.figures;
     
-    this.fullName = `${this.rowName}${this.cellName}`
-    this.cellFigure = this.figures[this.fullName]
+    this.cellAddress = `${this.rowName}${this.cellName}`
+    this.cellFigure = this.figures[this.cellAddress]
 
     this.state = {
       isHighlighted: false
     }
   }
 
+  componentDidUpdate() {
+    console.log(`Row ${this.rowName} updated`)
+  }
+
   render() {
-    const colorClass = cellColor(this.fullName) ? 'cell--white' : 'cell--black';
-    const highlightClass = this.props.highlightedCell === this.fullName ? 'cell--highlighted' : '';
-    const possibleMovies = this.props.possibleMovies.find((el) => el === this.fullName) ? 'cell--possible' : '';
+    const colorClass = cellColor(this.cellAddress) ? 'cell--white' : 'cell--black';
+    const highlightClass = this.props.highlightedCell === this.cellAddress ? 'cell--highlighted' : '';
+    const possibleMovies = this.props.possibleMovies.find((el) => el === this.cellAddress) ? 'cell--possible' : '';
 
     return (
       <div 
         className={`cell ${colorClass} ${highlightClass} ${possibleMovies}`}
-        onClick={() => this.props.selectCell(this.fullName, this.cellFigure)}
+        onClick={() => this.props.selectCell(this.cellAddress, this.cellFigure, this.props.highlightedCell)}
       >
-        <span>{this.fullName}</span>
-        {this.figures[this.fullName] ? <Figure type={this.figures[this.fullName]} /> : ''}
+        <span>{this.cellAddress}</span>
+        {this.figures[this.cellAddress] ? <Figure type={this.figures[this.cellAddress]} /> : ''}
       </div>
     );
   }
@@ -44,7 +48,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectCell: (cellName, cellFigure) => dispatch({type: 'SELECT_CELL', payload: {cellName, cellFigure}}),
+    selectCell: (selectedCellAddress, selectedCellFigure, highlightedCell) => dispatch({type: 'SELECT_CELL', payload: {selectedCellAddress, selectedCellFigure, highlightedCell}}),
   }
 }
 
