@@ -18,6 +18,9 @@ class Board extends Component {
 
   componentDidUpdate() {
     console.log(`Board updated`)
+    if (this.props.turn === 'black') {
+      this.props.initAITurn();
+    }
   }
   
   render() {
@@ -36,8 +39,17 @@ class Board extends Component {
 
 function mapStateToProps(state) {
   return {
-    pieces: filterRowFigures(state.pieces),
+    turn: state.turn,
   }
 }
 
-export default connect(mapStateToProps)(Board);
+function mapDispatchToProps(dispatch) {
+  return {
+    initAITurn: () => {
+      console.log('Ход AI');
+      dispatch({type: 'AI_TURN'});
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

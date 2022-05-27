@@ -12,10 +12,14 @@ const getPiecesConfiguration = () => {
   return game.board.configuration.pieces;
 }
 
-game.move('E2', 'E4')
-game.aiMove();
+const initAIMove = () => {
+  game.aiMove();
+  return game.board.configuration.pieces;
+}
+
+
 
 // console.log(game.board.configuration);
 // console.log(getMovies());
 
-export {game, getMovies, move, getPiecesConfiguration};
+export {game, getMovies, move, getPiecesConfiguration, initAIMove};
