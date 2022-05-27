@@ -6,16 +6,11 @@ import Figure from './Figure';
 class Cell extends Component {
   constructor(props) {
     super(props);
+
     this.cellName = props.cellName;
     this.rowName = props.rowName;
-    this.pieces = props.pieces;
     
     this.cellAddress = `${this.rowName}${this.cellName}`
-    this.cellFigure = this.pieces[this.cellAddress]
-
-    this.state = {
-      isHighlighted: false
-    }
   }
 
   componentDidUpdate() {
@@ -30,7 +25,7 @@ class Cell extends Component {
     return (
       <div 
         className={`cell ${colorClass} ${highlightClass} ${possibleMovies}`}
-        onClick={() => this.props.selectCell(this.cellAddress, this.cellFigure, this.props.highlightedCell)}
+        onClick={() => this.props.selectCell(this.cellAddress, this.props.pieces[this.cellAddress], this.props.highlightedCell)}
       >
         <span>{this.cellAddress}</span>
         {this.props.pieces[this.cellAddress] ? <Figure type={this.props.pieces[this.cellAddress]} /> : ''}
