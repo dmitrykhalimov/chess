@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Row from './Row';
 import { filterRowFigures } from '../core/filterRowFigures'
+import {connect} from 'react-redux'
 
 const ROWS = [
   'A',
@@ -14,11 +15,11 @@ const ROWS = [
 ]
 
 class Board extends Component {
-  constructor(props) {
-    super(props);
-    this.figures = filterRowFigures(props.boardConfig.pieces);
-  }
 
+  componentDidUpdate() {
+    console.log(`Board updated`)
+  }
+  
   render() {
     return (
       <div className={`board`}>
@@ -26,7 +27,6 @@ class Board extends Component {
           return <Row 
             key={`row${rowName}`}
             rowName={rowName}
-            figures={this.figures[rowName]}
           />
         })}
       </div>
@@ -34,4 +34,10 @@ class Board extends Component {
   }
 }
 
-export default Board;
+function mapStateToProps(state) {
+  return {
+    pieces: filterRowFigures(state.pieces),
+  }
+}
+
+export default connect(mapStateToProps)(Board);

@@ -8,10 +8,10 @@ class Cell extends Component {
     super(props);
     this.cellName = props.cellName;
     this.rowName = props.rowName;
-    this.figures = props.figures;
+    this.pieces = props.pieces;
     
     this.cellAddress = `${this.rowName}${this.cellName}`
-    this.cellFigure = this.figures[this.cellAddress]
+    this.cellFigure = this.pieces[this.cellAddress]
 
     this.state = {
       isHighlighted: false
@@ -19,7 +19,7 @@ class Cell extends Component {
   }
 
   componentDidUpdate() {
-    console.log(`Row ${this.rowName} updated`)
+    console.log(this.pieces);
   }
 
   render() {
@@ -33,7 +33,7 @@ class Cell extends Component {
         onClick={() => this.props.selectCell(this.cellAddress, this.cellFigure, this.props.highlightedCell)}
       >
         <span>{this.cellAddress}</span>
-        {this.figures[this.cellAddress] ? <Figure type={this.figures[this.cellAddress]} /> : ''}
+        {this.props.pieces[this.cellAddress] ? <Figure type={this.props.pieces[this.cellAddress]} /> : ''}
       </div>
     );
   }

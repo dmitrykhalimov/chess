@@ -1,4 +1,5 @@
 import Board from './components/Board';
+import {connect} from 'react-redux'
 import './App.css';
 import {game} from './core/engine';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cell from './Cell';
-
-
+import { filterRowFigures } from '../core/filterRowFigures'
+import {connect} from 'react-redux'
 
 const CELLS = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -9,14 +9,15 @@ class Row extends Component {
   constructor(props) {
     super(props);
     this.rowName = props.rowName;
-    this.figures = props.figures;
+    this.pieces = props.pieces;
   }
 
   componentDidUpdate() {
-    console.log(`Row ${this.rowName} updated`)
+    // console.log(this.props.pieces[this.rowName]);
   }
 
   render() {
+    console.log(this.props.pieces[this.rowName]);
     return (
       <div className={`row`}>
         {/* ух какая штука, зарефактори меня */}
@@ -25,7 +26,7 @@ class Row extends Component {
             key={`${this.rowName}${cellName}`}
             cellName={cellName}
             rowName={this.rowName}
-            figures={this.figures}
+            pieces={this.props.pieces[this.rowName]}
           />
         })}
       </div>
@@ -33,4 +34,10 @@ class Row extends Component {
   }
 }
 
-export default Row;
+function mapStateToProps(state) {
+  return {
+    pieces: filterRowFigures(state.pieces),
+  }
+}
+
+export default connect(mapStateToProps)(Row);
