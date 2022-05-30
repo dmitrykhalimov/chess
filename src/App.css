@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 200px 640px 200px;
+  width: 1000px;
 }
 
 .App-logo {
@@ -90,4 +93,21 @@
   height: 25px;
   background-color: #739341;
   border-radius: 50%;
+}
+
+.turns__list {
+  list-style: none;
+  padding: 0;
+}
+
+.turns__item {
+  margin-bottom: 20px;
+}
+
+.turns__number {
+  margin-right: 20px;
+}
+
+.turns__item span {
+  margin-right: 10px;
 }

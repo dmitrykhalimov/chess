@@ -12,12 +12,8 @@ class Row extends Component {
     this.pieces = props.pieces;
   }
 
-  componentDidUpdate() {
-    // console.log(this.props.pieces[this.rowName]);
-  }
 
   render() {
-    console.log(this.props.pieces[this.rowName]);
     return (
       <div className={`row`}>
         {/* ух какая штука, зарефактори меня */}

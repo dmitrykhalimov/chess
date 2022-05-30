@@ -19,7 +19,7 @@ class Board extends Component {
   componentDidUpdate() {
     console.log(`Board updated`)
     if (this.props.turn === 'black') {
-      this.props.initAITurn();
+      setTimeout(this.props.initAITurn, 500);
     }
   }
   
@@ -46,7 +46,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     initAITurn: () => {
-      console.log('Ход AI');
       dispatch({type: 'AI_TURN'});
     },
   }

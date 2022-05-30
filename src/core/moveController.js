@@ -2,8 +2,6 @@ import {game, move} from './engine';
 import {possibleMovies} from './possibleMovies';
 import {highlightCell} from './highlightCell';
 
-console.log(possibleMovies)
-
 const moveController = (payload) => {
   const {selectedCellAddress, selectedCellFigure, highlightedCell} = payload;
 

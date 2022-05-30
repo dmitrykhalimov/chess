@@ -13,10 +13,6 @@ class Cell extends Component {
     this.cellAddress = `${this.rowName}${this.cellName}`
   }
 
-  componentDidUpdate() {
-    console.log(this.pieces);
-  }
-
   render() {
     const colorClass = cellColor(this.cellAddress) ? 'cell--white' : 'cell--black';
     const highlightClass = this.props.highlightedCell === this.cellAddress ? 'cell--highlighted' : '';
