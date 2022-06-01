@@ -12,12 +12,22 @@ class Row extends Component {
     this.pieces = props.pieces;
   }
 
+  prepareArray() {
+    let board = CELLS.map((item) => item)
+    
+    if (this.props.player !== 'black') {
+      board = board.reverse();
+    };
+
+    return board;
+  }
+
 
   render() {
     return (
       <div className={`row`}>
         {/* ух какая штука, зарефактори меня */}
-        {CELLS.map((item) => item).reverse().map((cellName) => {
+        {this.prepareArray().map((cellName) => {
           return <Cell 
             key={`${this.rowName}${cellName}`}
             cellName={cellName}
@@ -32,6 +42,7 @@ class Row extends Component {
 
 function mapStateToProps(state) {
   return {
+    player: state.player,
     pieces: filterRowFigures(state.pieces),
   }
 }

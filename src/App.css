@@ -118,7 +118,7 @@
 
 .menu__levels label {
   display: inline-flex;
-  margin-right: 20px;
+  margin-right: 10px;
   justify-content: center;
   align-items: center;
   outline: 2px solid gray;
@@ -130,6 +130,18 @@
 }
 
 .menu__levels input:checked + label {
+  outline-color: orangered;
+}
+
+.menu__color label {
+  display: inline-flex;
+  width: 55px;
+  height: 55px;
+  outline: 2px solid gray;
+  margin-right: 10px;
+}
+
+.menu__color input:checked + label {
   outline-color: orangered;
 }
 

@@ -5,6 +5,7 @@ import { getPiecesConfiguration, initAIMove, getHistory, getMovies, startGame } 
 
 const initalState = {
   levelAI: 2,
+  newGameColor: 'black',
   player: 'white',
   highlightedCell: '',
   possibleMovies: [],
@@ -23,16 +24,13 @@ export default function rootReducer(state = initalState, action) {
       };
       // return moveController(action.payload.cellName, action.payload.cellFigure, action.payload.highlightedCell)
     case 'INIT':
-      startGame();
+      startGame(state.newGameColor, state.levelAI);
       return {
         ...state,
-        history: [],
+        history: getHistory().map((item) => item),
+        player: state.newGameColor,
         pieces: getPiecesConfiguration()
       }
-    // case 'INC':
-      // const titkins = state.history.map((item) => item);
-      // titkins.push('333')
-      // return Object.assign({}, state, {history: titkins})
     case 'AI_TURN':
       console.log(state.levelAI)
       return {
@@ -45,6 +43,11 @@ export default function rootReducer(state = initalState, action) {
       return {
         ...state,
         levelAI: action.payload
+      }
+    case 'CHANGE_COLOR':
+      return {
+        ...state,
+        newGameColor: action.payload
       }
     default: 
       return state

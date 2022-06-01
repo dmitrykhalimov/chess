@@ -23,8 +23,12 @@ const initAIMove = (level) => {
   return game.board.configuration.pieces;
 }
 
-const startGame = () => {
+const startGame = (playerColor, level) => {
   game = new Game();
+
+  if (playerColor === 'black') {
+    game.aiMove(level)
+  }
 }
 
 
