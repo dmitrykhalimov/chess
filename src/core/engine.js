@@ -18,8 +18,8 @@ const getHistory = () => {
   return game.getHistory();
 }
 
-const initAIMove = () => {
-  game.aiMove();
+const initAIMove = (level) => {
+  game.aiMove(level);
   return game.board.configuration.pieces;
 }
 

@@ -1,8 +1,8 @@
 .App {
   display: grid;
   margin: 0 auto;
-  grid-template-columns: 200px 640px 200px;
-  width: 1000px;
+  grid-template-columns: 300px 640px 300px;
+  width: 1200px;
 }
 
 .App-logo {
@@ -117,10 +117,20 @@
 }
 
 .menu__levels label {
-  display: inline-block;
-  background-color: green;
+  display: inline-flex;
+  margin-right: 20px;
+  justify-content: center;
+  align-items: center;
+  outline: 2px solid gray;
   width: 35px;
   height: 35px;
+
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.menu__levels input:checked + label {
+  outline-color: orangered;
 }
 
 .visually-hidden {

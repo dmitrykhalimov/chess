@@ -4,6 +4,7 @@ import { moveController} from "../core/moveController";
 import { getPiecesConfiguration, initAIMove, getHistory, getMovies, startGame } from "../core/engine"
 
 const initalState = {
+  levelAI: 2,
   player: 'white',
   highlightedCell: '',
   possibleMovies: [],
@@ -33,11 +34,17 @@ export default function rootReducer(state = initalState, action) {
       // titkins.push('333')
       // return Object.assign({}, state, {history: titkins})
     case 'AI_TURN':
+      console.log(state.levelAI)
       return {
         ...state,
         turn: 'white',
-        pieces: initAIMove(),
+        pieces: initAIMove(state.levelAI),
         history: getHistory().map((item) => item),
+      }
+    case 'CHANGE_AI_LEVEL':
+      return {
+        ...state,
+        levelAI: action.payload
       }
     default: 
       return state
