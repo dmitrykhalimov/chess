@@ -111,3 +111,27 @@
 .turns__item span {
   margin-right: 10px;
 }
+
+.menu__levels input {
+  /* display: none; */
+}
+
+.menu__levels label {
+  display: inline-block;
+  background-color: green;
+  width: 35px;
+  height: 35px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

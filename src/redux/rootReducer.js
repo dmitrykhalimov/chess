@@ -1,7 +1,7 @@
 import { highlightCell } from "../core/highlightCell";
 import { possibleMovies} from "../core/possibleMovies";
 import { moveController} from "../core/moveController";
-import { getPiecesConfiguration, initAIMove, getHistory, getMovies } from "../core/engine"
+import { getPiecesConfiguration, initAIMove, getHistory, getMovies, startGame } from "../core/engine"
 
 const initalState = {
   player: 'white',
@@ -22,8 +22,10 @@ export default function rootReducer(state = initalState, action) {
       };
       // return moveController(action.payload.cellName, action.payload.cellFigure, action.payload.highlightedCell)
     case 'INIT':
+      startGame();
       return {
         ...state,
+        history: [],
         pieces: getPiecesConfiguration()
       }
     // case 'INC':

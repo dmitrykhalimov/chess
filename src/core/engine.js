@@ -2,7 +2,7 @@ import { Game, move, status, moves, aiMove, getFen } from 'js-chess-engine'
 import { translateHistory } from './translateHistory'
 
 // инициализирует игру
-const game = new Game();
+let game;
 
 // получает ходы
 const getMovies = () => {
@@ -23,6 +23,10 @@ const initAIMove = () => {
   return game.board.configuration.pieces;
 }
 
+const startGame = () => {
+  game = new Game();
+}
+
 
 
 // console.log(game.board.configuration);
@@ -33,5 +37,6 @@ export {
   getMovies, 
   getPiecesConfiguration, 
   initAIMove,
-  getHistory
+  getHistory,
+  startGame
 };
