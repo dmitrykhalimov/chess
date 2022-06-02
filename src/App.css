@@ -1,19 +1,15 @@
 .App {
+  font-family: Arial, Helvetica, sans-serif;
   display: grid;
   margin: 0 auto;
   grid-template-columns: 300px 640px 300px;
   width: 1200px;
+  padding-top: 50px;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -98,22 +94,41 @@
 .turns__list {
   list-style: none;
   padding: 0;
+
+  box-sizing: border-box;
 }
 
 .turns__item {
-  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.turns__item:nth-child(even) {
+  background-color: #e5eaf0;
 }
 
 .turns__number {
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .turns__item span {
   margin-right: 10px;
+  font-size: 16px;
 }
 
 .menu__levels input {
   /* display: none; */
+}
+
+.menu__levels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu__color {
+  display: flex;
+  justify-content: space-between;  
 }
 
 .menu__levels label {
@@ -156,4 +171,37 @@
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.menu__wrapper {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.turns h2 {
+  margin-top: 0;
+  /* text-align: center; */
+}
+
+.turns__wrapper {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.menu__wrapper button {
+  width: 100%;
+  height: 50px;
+  background-color: #1a6e8a;
+  border: 0;
+
+  font-size: 22px;
+  color: white;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.menu__wrapper button:hover {
+  opacity: 0.9;
 }

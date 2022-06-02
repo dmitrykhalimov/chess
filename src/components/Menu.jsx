@@ -7,11 +7,13 @@ class Menu extends Component {
   render() {
     return (
       <div className="menu">
-        <button onClick={this.props.startGame}>Новая игра</button>
-        <h3>Уровень компьютера</h3>
-        <Levels />
-        <h3>Выбор фигур</h3>
-        <Color />
+        <div className="menu__wrapper">
+          <button onClick={this.props.startGame}>Новая игра</button>
+          <h3>Уровень компьютера</h3>
+          <Levels />
+          <h3>Выбор фигур</h3>
+          <Color />
+        </div>
       </div>
     );
   }

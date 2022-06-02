@@ -35,17 +35,19 @@ class Turns extends Component {
   render() {
     return (
       <aside className="turns">
-        <h2>Ходы игроков</h2>
-        <ul className="turns__list">
-          {this.adaptHistory(this.props.history).map((item, index) => {
-            return <li key={`turn${index}`}className="turns__item">
-              <b className="turns__number">{index}</b>
-              {item.map((item) => {
-                return <span>{item.from} - {item.to}</span>
-              })}
-            </li>;
-          })}
-        </ul>
+        <div className="turns__wrapper">
+          <h2>Ходы игроков</h2>
+          <ul className="turns__list">
+            {this.adaptHistory(this.props.history).map((item, index) => {
+              return <li key={`turn${index}`}className="turns__item">
+                <b className="turns__number">{index}</b>
+                {item.map((item) => {
+                  return <span>{item.from} - {item.to}</span>
+                })}
+              </li>;
+            })}
+          </ul>
+        </div>
       </aside>
     );
   }

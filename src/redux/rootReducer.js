@@ -5,8 +5,8 @@ import { getPiecesConfiguration, initAIMove, getHistory, getMovies, startGame } 
 
 const initalState = {
   levelAI: 2,
-  newGameColor: 'black',
-  player: 'white',
+  newGameColor: 'white',
+  player: '',
   highlightedCell: '',
   possibleMovies: [],
   turn: 'white',
