@@ -29,10 +29,10 @@ const initAIMove = (level) => {
 
 const startGame = (playerColor, level) => {
   game = new Game();
+}
 
-  if (playerColor === 'black') {
-    game.aiMove(level)
-  }
+const exportParty = () => {
+  return game.exportJson();
 }
 
 
@@ -47,5 +47,6 @@ export {
   getCurrentTurn,
   initAIMove,
   getHistory,
+  exportParty,
   startGame
 };

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Levels from './Levels';
 import Color from './Color';
+import { download } from '../core/download';
+
 
 class Menu extends Component {
   render() {
@@ -13,6 +15,9 @@ class Menu extends Component {
           <Levels />
           <h3>Выбор фигур</h3>
           <Color />
+          <h3>Импорт экспорт</h3>
+          <button onClick={download}>Экспорт</button>
+          <button onClick={download}>Импорт</button>
         </div>
       </div>
     );
