@@ -23,12 +23,12 @@ class Turns extends Component {
       return acc;
     },[])
 
-    console.log(result);
+    // console.log(result);
     return result;
   }
 
   componentDidUpdate() {
-    console.log('Изменились ходы');
+    // console.log('Изменились ходы');
     this.adaptHistory(this.props.history);
     // console.log(this.props.history);
   }

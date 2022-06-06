@@ -1,7 +1,7 @@
 import { highlightCell } from "../core/highlightCell";
 import { possibleMovies} from "../core/possibleMovies";
 import { moveController} from "../core/moveController";
-import { getPiecesConfiguration, initAIMove, getHistory, getMovies, startGame } from "../core/engine"
+import { getPiecesConfiguration, initAIMove, getHistory, getCurrentTurn, startGame } from "../core/engine"
 
 const initalState = {
   levelAI: 2,
@@ -16,10 +16,12 @@ const initalState = {
 export default function rootReducer(state = initalState, action) {
   switch(action.type) {
     case 'SELECT_CELL':
-      console.log('Выбрана ячейка');
+      // console.log('Выбрана ячейка');
+      console.log(state);
       return {
         ...state,
-        ...moveController(action.payload),
+        ...moveController(action.payload, state.turn, state.player),
+        turn: getCurrentTurn(),
         history: getHistory().map((item) => item),
       };
       // return moveController(action.payload.cellName, action.payload.cellFigure, action.payload.highlightedCell)
@@ -28,15 +30,15 @@ export default function rootReducer(state = initalState, action) {
       return {
         ...state,
         history: getHistory().map((item) => item),
+        turn: getCurrentTurn(),
         player: state.newGameColor,
         pieces: getPiecesConfiguration()
       }
     case 'AI_TURN':
-      console.log(state.levelAI)
       return {
         ...state,
-        turn: 'white',
         pieces: initAIMove(state.levelAI),
+        turn: getCurrentTurn(),
         history: getHistory().map((item) => item),
       }
     case 'CHANGE_AI_LEVEL':

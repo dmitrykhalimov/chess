@@ -15,10 +15,11 @@ const ROWS = [
 ]
 
 class Board extends Component {
+  componentWillMount() {}
 
   componentDidUpdate() {
     console.log(`Board updated`)
-    if (this.props.turn === 'black') {
+    if (this.props.turn !== this.props.player) {
       setTimeout(this.props.initAITurn, 500);
     }
   }
@@ -40,6 +41,7 @@ class Board extends Component {
 function mapStateToProps(state) {
   return {
     turn: state.turn,
+    player: state.player,
   }
 }
 

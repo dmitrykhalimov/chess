@@ -13,6 +13,10 @@ const getPiecesConfiguration = () => {
   return game.board.configuration.pieces;
 }
 
+const getCurrentTurn = () => {
+  return game.board.configuration.turn;
+}
+
 const getHistory = () => {
   translateHistory(game.getHistory())
   return game.getHistory();
@@ -39,7 +43,8 @@ const startGame = (playerColor, level) => {
 export {
   game, 
   getMovies, 
-  getPiecesConfiguration, 
+  getPiecesConfiguration,
+  getCurrentTurn,
   initAIMove,
   getHistory,
   startGame
