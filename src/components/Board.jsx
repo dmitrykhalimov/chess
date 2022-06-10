@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Row from './Row';
 import { filterRowFigures } from '../core/filterRowFigures'
 import {connect} from 'react-redux'
-import { download } from '../core/download';
 
 const ROWS = [
   'A',

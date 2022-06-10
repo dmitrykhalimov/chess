@@ -6,6 +6,27 @@ import { download } from '../core/download';
 
 
 class Menu extends Component {
+  constructor(props) {
+    super(props);
+
+    this.inputOpenFileRef = React.createRef()
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
+  }
+
+  handleFileChange(evt) {
+    console.log(evt.target.files[0])
+    let formData = new FormData();
+     
+    formData.append("photo", evt.target.files[0]);
+    console.log(formData);
+    
+  }
+
+  handleButtonClick() {
+    this.inputOpenFileRef.current.click()
+  }
+
   render() {
     return (
       <div className="menu">
@@ -16,8 +37,9 @@ class Menu extends Component {
           <h3>Выбор фигур</h3>
           <Color />
           <h3>Импорт экспорт</h3>
+          <input type="file" ref={this.inputOpenFileRef} onChange={this.handleFileChange} style={{display: "none"}}/>
           <button onClick={download}>Экспорт</button>
-          <button onClick={download}>Импорт</button>
+          <button onClick={this.handleButtonClick}>Импорт</button>
         </div>
       </div>
     );
@@ -34,6 +56,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     startGame: () => dispatch({type: 'INIT'}),
+    loadGame: (jsonParty) => dispatch({type: 'LOAD_GAME'})
   }
 }
 
